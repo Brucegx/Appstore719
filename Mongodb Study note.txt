@@ -1,0 +1,64 @@
+Mongodb Study note
+
+mongo 127.0.0.1:27017/admin means that open shell to myself(127.0.0.1)
+use foobar => build a table called foobar but till now they are still in temp db pool. not be upload to mongodb until you add some list into this table which will be uploaded to mongodb
+
+operations:
+db.[doucumentName].insert({})  => is that the documentName  a collection?
+
+show collections => show all documents/collections
+
+db.[doucumentName].find() 
+
+db.[doucumentName].update({old context}{$set:{new context}}) =>renew the collections’ data (pay attention on $set)
+
+db.[documentName].remove({}) => remove the context in the collections
+db.[documentName].drop()
+db.dropDatabase()
+
+ db.status()
+
+rule of data name:
+no / \ ‘’ 
+lower case 
+
+avoid to use “-“like “db-text”!!
+
+
+db.[doucumentName].save({}) => it can update the context
+
+db.[doucumentName].remove() =>delete the context
+when data is huge, drop the collections and rebuild is better than delete or r remove
+
+db.[doucumentName].update({name:”33”},{$set:{name:”333”}},false,true)
+update in group ($set is very important)
+
+build the index for data: 
+db.[doucumentName].ensureIndex({number:1}) =>inorder
+
+L3：document update operation
+L4：build index by using shell
+L5：GridFS system intro & fixed group & API
+
+Eval:
+db.eval(function, arguments)¶
+Provides the ability to run JavaScript code on the MongoDB server.
+db.system.js.””({}) this is a hiding collection, it can be used as global variable 
+
+L6: mongoDB configure 
+
+import
+mongo import —db [dbName] —collection [collectionName] —file:[directory] 
+
+restore
+add an user
+
+L7 
+主从复制 参数 
+副本集
+
+L8
+分片
+
+L9
+
