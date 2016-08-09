@@ -1,22 +1,34 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+// Any Js in here is automatically ran for us
 
-import './main.html';
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
+// Import the React Library
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ImageList from './components/image_list';
+
+// we can import the react just call react but we must provide the path because there might be many the same name called Image_list
+
+// Create a component
+const App = () => {
+	return (
+		<div>
+			<ImageList /> 
+		</div>
+	);
+};
+
+// Render this component to the screen(excute)
+
+Meteor.startup(() => {
+	ReactDOM.render(<App />, document.querySelector('.container'));
 });
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-});
 
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
-});
+
+//tell the browser to find the container if find it reutrn app or excute app 
+//but it not excute inmideately so we use meteor.startup()to load it 
+
+
+
+
+
